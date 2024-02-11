@@ -1,0 +1,483 @@
+lab 4 friend class
+
+
+/*
+#include<iostream>
+using namespace std;
+
+class A
+{
+private:
+    int feet,inch;
+public:
+    void getdata()
+    {
+        cout<<"Enter feet : "<<endl;
+        cin>>feet;
+        cout<<"Enter inch : "<<endl;
+        cin>>inch;
+    }
+    friend class B;
+};
+
+class B
+{
+public:
+    void calculus(A a1,A a2)
+    {
+        a1.inch=a1.inch+a2.inch;
+        a1.feet=a1.feet+a2.feet+a1.inch/12;
+        a1.inch=a1.inch%12;
+        cout<<"The final distance is "<<a1.feet<<" feet and "<<a1.inch<<" inch.";
+    }
+};
+
+int main()
+{
+    A a1,a2;
+    B b;
+    a1.getdata();
+    a2.getdata();
+    b.calculus(a1,a2);
+    return 0;
+}
+*/
+
+
+
+
+#include<iostream>
+using namespace std;
+
+class A
+{
+private:
+    int feet,inch;
+public:
+    void getdata()
+    {
+        cout<<"Enter feet : "<<endl;
+        cin>>feet;
+        cout<<"Enter inch : "<<endl;
+        cin>>inch;
+    }
+    friend class B;
+};
+
+class B
+{
+    int I,F;
+public:
+    void calculus(A a1,A a2)
+    {
+        I=a1.inch+a2.inch;
+        F=a1.feet+a2.feet+I/12;
+        I=I%12;
+        cout<<"The final distance is "<<F<<" feet and "<<I<<" inch.";
+    }
+};
+
+int main()
+{
+    A a1,a2;
+    B b;
+    a1.getdata();
+    a2.getdata();
+    b.calculus(a1,a2);
+    return 0;
+}
+
+
+/*
+#include<iostream>
+using namespace std;
+
+class A
+{
+private:
+    int age;
+    string name;
+public:
+    void getdata()
+    {
+        cout<<"Enter Name : "<<endl;
+        cin>>name;
+        cout<<"Enter Age : "<<endl;
+        cin>>age;
+    }
+    friend class B;
+};
+
+class B
+{
+public:
+    void calculus(A aa1,A aa2)
+    {
+        cout<<"Student named "<<aa1.name<<" of age "<<aa1.age<<" is beanchmate with Student named " <<aa2.name<<" of age "<<aa2.age<<".";
+    }
+};
+
+int main()
+{
+    A aa1,aa2;
+    B bb;
+    aa1.getdata();
+    aa2.getdata();
+    bb.calculus(aa1,aa2);
+    return 0;
+}
+
+*/
+
+
+
+
+
+lab 4 friend function
+/*
+#include<iostream>
+using namespace std;
+
+class Distance
+{
+private:
+        int feet,inch;
+public:
+
+    void getdata()
+    {
+        cout<<"Enter feet : "<<endl;
+        cin>>feet;
+        cout<<"Enter inch : "<<endl;
+        cin>>inch;
+    }
+    friend void display(Distance,Distance);
+    friend void calculus(Distance,Distance);
+};
+    void display(Distance a1,Distance a2)
+    {
+        cout<<"\n\nGiven Feet : "<<a1.feet;
+        cout<<"\nGiven Inch : "<<a1.inch;
+        cout<<"\nGiven Feet : "<<a2.feet;
+        cout<<"\nGiven Inch : "<<a2.inch;
+    }
+
+    void calculus(Distance a1,Distance a2)
+    {
+        a1.inch=a1.inch+a2.inch;
+        a1.feet=a1.feet+a2.feet+a1.inch/12;
+        a1.inch=a1.inch%12;
+        cout<<"\n\nThe final distance is "<<a1.feet<<" feet and "<<a1.inch<<" inch.";
+    }
+int main()
+{
+    Distance a1,a2;
+    a1.getdata();
+    a2.getdata();
+    display(a1,a2);
+    calculus (a1,a2);
+    return 0;
+}
+*/
+
+
+
+#include<iostream>
+using namespace std;
+
+class Distance
+{
+private:
+public:
+    int feet,inch;
+    void getdata()
+    {
+        cout<<"Enter feet : "<<endl;
+        cin>>feet;
+        cout<<"Enter inch : "<<endl;
+        cin>>inch;
+    }
+    friend void display(Distance,Distance);
+    friend void calculus(Distance a1,Distance a2);
+};
+    void display(Distance a1,Distance a2)
+    {
+        cout<<"\n\nGiven Feet : "<<a1.feet;
+        cout<<"\nGiven Inch : "<<a1.inch;
+        cout<<"\nGiven Feet : "<<a2.feet;
+        cout<<"\nGiven Inch : "<<a2.inch;
+    }
+
+    void calculus(Distance a1,Distance a2)
+    {
+        Distance D;
+        D.inch=a1.inch+a2.inch;
+        D.feet=a1.feet+a2.feet+D.inch/12;
+        D.inch=D.inch%12;
+    }
+
+    void result(Distance D)
+    {
+             cout<<"\n\nThe final distance is "<<D.feet<<" feet and "<<D.inch<<" inch.";
+    }
+
+int main()
+{
+    Distance a1,a2,a3;
+    a1.getdata();
+    a2.getdata();
+    display(a1,a2);
+    calculus (a1,a2);
+    result(a3);
+    return 0;
+}
+
+
+lab 5
+#include<iostream>
+using namespace std;
+
+class Amount
+{
+private:
+    int rupee,paisa;
+public:
+    void getamount()
+    {
+        cout<<"Enter Rupee : "<<endl;
+        cin>>rupee;
+        cout<<"Enter Paisa : "<<endl;
+        cin>>paisa;
+    }
+    void display()
+    {
+        cout<<"Total Amount is "<<rupee<<" Rupee and "<<paisa<<" Paisa.";
+    }
+    friend void add (Amount a1,Amount a2);
+};
+
+void add (Amount a1,Amount a2)
+{
+    Amount A;
+    A.paisa=a1.paisa+a2.paisa;
+    A.rupee=a1.rupee+a2.rupee+A.paisa/100;
+    A.paisa=A.paisa%100;
+    A.display();
+}
+
+int main()
+{
+    Amount a1,a2;
+    a1.getamount();
+    a2.getamount();
+    add(a1,a2);
+    return 0;
+}
+
+
+
+
+
+lab 6
+#include<iostream>
+using namespace std;
+
+class Matrix
+{
+private:
+    int ary[3][3];
+public:
+    void getdata()
+    {
+        for (int i=0;i<=2;i++)
+        {
+            for (int j=0;j<=2;j++)
+            {
+                cout<<"INPUT "<<i+1<<" row "<<j+1<<" column element of 3*3 matrix and press Enter: ";
+                cin>>ary[i][j];
+            }
+        }
+    }
+
+     void display()
+    {
+        cout<<"\nMatrix form:\n";
+        for (int i=0;i<=2;i++)
+        {
+            for (int j=0;j<=2;j++)
+            {
+                cout<<ary[i][j]<<"\t";
+            }
+            cout<<"\n";
+        }
+    }
+
+
+    Matrix transpose(Matrix m1)
+    {
+        Matrix m;
+        cout<<"\nTranspose:\n";
+        for (int i=0;i<=2;i++)
+        {
+            for (int j=0;j<=2;j++)
+            {
+                m.ary[i][j]=m1.ary[j][i];
+            }
+        }
+        return m;
+    }
+
+};
+
+int main()
+{
+Matrix m1,m2;
+m1.getdata();
+m1.display();
+m2=m1.transpose(m1);
+m2.display();
+return 0;
+}
+
+
+
+
+
+lab 7
+
+
+#include<iostream>
+using namespace std;
+
+class Matrix
+{
+private:
+    int a[3][3],x[3][3];
+public:
+    void getdata()
+    {
+        cout<<"INPUT  element of 3*3 matrix: ";
+        for (int i=0;i<=2;i++)
+        {
+            for (int j=0;j<=2;j++)
+            {
+                cin>>a[i][j];
+            }
+        }
+    }
+
+     void display()
+    {
+        cout<<"\nMatrix form:\n";
+        for (int i=0;i<=2;i++)
+        {
+            for (int j=0;j<=2;j++)
+            {
+                cout<<a[i][j]<<"\t";
+            }
+            cout<<"\n";
+        }
+    }
+
+
+
+    Matrix Multiply (Matrix m2)
+    {
+        Matrix m;
+        for (int i=0;i<=2;i++)
+        {
+            for (int j=0;j<=2;j++)
+            {
+                x[i][j]=0;
+                    for (int k=0;k<=2;k++)
+                    {
+                        m.x[i][j]=m.x[i][j]+(a[i][k]*m2.a[k][j]);
+                    }
+            }
+        }
+        return m;
+    }
+
+    void Multdisplay()
+    {
+        cout<<"\nMatrix Multiplication Display form:\n";
+        for (int i=0;i<=2;i++)
+        {
+            for (int j=0;j<=2;j++)
+            {
+                cout<<x[i][j]<<"\t";
+            }
+            cout<<endl;
+        }
+    }
+};
+
+int main()
+{
+Matrix m1,m2,m3;
+m1.getdata();
+m2.getdata();
+m1.display();
+m2.display();
+m3=m1.Multiply(m2);
+m3.Multdisplay();
+return 0;
+}
+
+
+
+
+lab 8
+
+#include<iostream>
+using namespace std;
+
+class DM;
+class DB
+{
+public:
+    float feet,inch;
+
+    void getdata()
+    {
+        cout<<"Enter Feet = "<<endl;
+        cin>>feet;
+        cout<<"Enter Inch = "<<endl;
+        cin>>inch;
+    }
+    friend void addanddisplay (DB,DM);
+};
+
+class DM
+{
+public:
+    float meter,centi;
+    void getdata()
+    {
+        cout<<"Enter Meter = "<<endl;
+        cin>>meter;
+        cout<<"Enter Centimeter = "<<endl;
+        cin>>centi;
+    }
+    friend void addanddisplay (DB,DM);
+};
+
+void addanddisplay (DB a,DM b)
+{
+b.meter=b.meter*3.28;
+b.centi=b.centi*0.0328;
+a.inch=a.inch*0.0833;
+a.feet=a.feet+b.meter+b.centi+a.inch;
+cout<<"SUM = "<<a.feet;
+}
+
+int main()
+{
+    DB a;
+    DM b;
+    a.getdata();
+    b.getdata();
+    addanddisplay(a,b);
+    return 0;
+}
+

@@ -1,0 +1,44 @@
+
+#include<iostream>
+using namespace std;
+
+class Distance
+{
+private:
+        int feet,inch;
+public:
+
+    void getdata()
+    {
+        cout<<"Enter feet : "<<endl;
+        cin>>feet;
+        cout<<"Enter inch : "<<endl;
+        cin>>inch;
+    }
+    friend void display(Distance,Distance);
+    friend void calculus(Distance,Distance,Distance);
+};
+    void display(Distance a1,Distance a2)
+    {
+        cout<<"\n\nGiven Feet : "<<a1.feet;
+        cout<<"\nGiven Inch : "<<a1.inch;
+        cout<<"\nGiven Feet : "<<a2.feet;
+        cout<<"\nGiven Inch : "<<a2.inch;
+    }
+
+    void calculus(Distance a1,Distance a2,Distance a3)
+    {
+        a3.inch=a1.inch+a2.inch;
+        a3.feet=a1.feet+a2.feet+a1.inch/12;
+        a3.inch=a1.inch%12;
+        cout<<"\n\nThe final distance is "<<a3.feet<<" feet and "<<a3.inch<<" inch.";
+    }
+int main()
+{
+    Distance a1,a2,a3;
+    a1.getdata();
+    a2.getdata();
+    display(a1,a2);
+    a3=calculus (a1,a2,a3);
+    return 0;
+}
